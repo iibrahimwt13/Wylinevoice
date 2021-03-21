@@ -20,12 +20,12 @@ from helpers.wrappers import errors
 async def play(_, message: Message):
     audio = (message.reply_to_message.audio or message.reply_to_message.voice) if message.reply_to_message else None
 
-    res = await message.reply_text("🔄 Processing...")
+    res = await message.reply_text("🔄 İşleme Alındı...")
 
     if audio:
         if round(audio.duration / 60) > DURATION_LIMIT:
             raise DurationLimitError(
-                f"Videos longer than {DURATION_LIMIT} minute(s) aren't allowed, the provided video is {audio.duration / 60} minute(s)"
+                f"Daha uzun videolar {DURATION_LIMIT} Dakika(s) izin verilmiyor, sağlanan video {audio.duration / 60} Dakika(s)"
             )
 
         file_name = audio.file_unique_id + "." + (
@@ -56,7 +56,7 @@ async def play(_, message: Message):
                         break
 
         if offset in (None,):
-            await res.edit_text("❕ You did not give me anything to play.")
+            await res.edit_text("❕ bana çalmam için hiçbir şey vermedin.")
             return
 
         url = text[offset:offset + length]
@@ -65,7 +65,7 @@ async def play(_, message: Message):
 
     if message.chat.id in callsmusic.pytgcalls.active_calls:
         position = queues.add(message.chat.id, file_path)
-        await res.edit_text(f"#️⃣ Queued at position {position}.")
+        await res.edit_text(f"#️⃣ Sıraya Alındınız {position}.")
     else:
-        await res.edit_text("▶️ Playing...")
+        await res.edit_text("▶️ Başlatılıyor...")
         callsmusic.pytgcalls.join_group_call(message.chat.id, file_path, 48000, callsmusic.pytgcalls.get_cache_peer())
