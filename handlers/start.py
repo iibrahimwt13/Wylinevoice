@@ -7,24 +7,24 @@ from helpers.filters import command, other_filters, other_filters2
 @Client.on_message(command("start") & other_filters2)
 async def start(_, message: Message):
     await message.reply_text(
-        f"""<b>👋🏻 Hi {message.from_user.first_name}!</b>
+        f"""<b>👋🏻 Merhaba {message.from_user.first_name}!</b>
 
-I am Calls Music, an open-source bot that lets you play music in your groups.
+Gruplarınızda müzik çalmanıza izin veren açık kaynaklı bir bot olan WylineBot'tum. 
 
-Use the buttons below to know more about me.""",
+Hakkımda daha fazla bilgi edinmek için aşağıdaki düğmeleri kullanın.""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        "⚒ Source code", url="https://t.me/CallsMusic"
+                        "🗂️Kullanma Kodları", url="https://t.me/WylineVoiceHelp"
                     )
                 ],
                 [
                     InlineKeyboardButton(
-                        "💬 Group", url="https://t.me/callsmusicchat"
+                        "💬 Grup", url="https://t.me/OlympusCh4t"
                     ),
                     InlineKeyboardButton(
-                        "Channel 🔈", url="https://t.me/callsmusic"
+                        "Support Grup 🔈", url="https://t.me/wylinesupport"
                     )
                 ]
             ]
@@ -35,15 +35,15 @@ Use the buttons below to know more about me.""",
 @Client.on_message(command("start") & other_filters)
 async def start2(_, message: Message):
     await message.reply_text(
-        "💁🏻‍♂️ Do you want to search for a YouTube video?",
+        "💁🏻‍♂️ Bir YouTube videosu aramak ister misin?",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        "✅ Yes", switch_inline_query_current_chat=""
+                        "✅ Evet", switch_inline_query_current_chat=""
                     ),
                     InlineKeyboardButton(
-                        "No ❌", callback_data="close"
+                        "Hayır ❌", callback_data="close"
                     )
                 ]
             ]
