@@ -8,9 +8,7 @@ import callsmusic
 import converter
 import youtube
 import queues
-
-from config import DURATION_LIMIT
-from helpers.errors import DurationLimitError
+ 
 from helpers.filters import command, other_filters
 from helpers.wrappers import errors
 
